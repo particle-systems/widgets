@@ -6,56 +6,40 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
+    interface PsEmailCapture {
+        "btnText": string;
+        "heading": string;
+        "placeholder": string;
+        "subtext": string;
     }
 }
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLPsEmailCaptureElement extends Components.PsEmailCapture, HTMLStencilElement {
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    var HTMLPsEmailCaptureElement: {
+        prototype: HTMLPsEmailCaptureElement;
+        new (): HTMLPsEmailCaptureElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
+        "ps-email-capture": HTMLPsEmailCaptureElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
+    interface PsEmailCapture {
+        "btnText"?: string;
+        "heading"?: string;
+        "placeholder"?: string;
+        "subtext"?: string;
     }
     interface IntrinsicElements {
-        "my-component": MyComponent;
+        "ps-email-capture": PsEmailCapture;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "ps-email-capture": LocalJSX.PsEmailCapture & JSXBase.HTMLAttributes<HTMLPsEmailCaptureElement>;
         }
     }
 }
