@@ -8,9 +8,67 @@
     <script type="module" src="/build/ps-email-capture.esm.js"></script>
     <script nomodule src="/build/ps-email-capture.js"></script>
 
-    <style></style>
+    <style>
+      .ps-ec-container {
+        width: 400px;
+      }
+      .ps-ec-heading {
+        margin-bottom: 0.5em;
+        font-size: 1.5em;
+      }
+
+      .ps-ec-input {
+        box-sizing: border-box;
+        border: 1px solid rgba(0, 0, 0, 0.6);
+        padding: 1em;
+        margin-right: 0;
+        font-size: 1em;
+        width: 70%;
+      }
+
+      .ps-ec-button {
+        padding: 1em;
+        border: 0;
+        margin-left: 0;
+        font-size: 1em;
+        border: 1px solid rgba(0, 0, 0, 0.6);
+        width: 30%;
+        border-left: 0;
+      }
+
+      .ps-ec-button:hover {
+        cursor: pointer;
+      }
+
+      .ps-ec-subtext {
+        color: rgba(0, 0, 0, 0.6);
+        font-family: sans-serif;
+        margin-top: 0.5em;
+        font-size: 0.8em;
+      }
+      .ps-ec-success-msg {
+        background: #d4efdf;
+        color: #1b7a43;
+        padding: 1em;
+        border-radius: 0.25em;
+      }
+
+      .ps-ec-failed-msg {
+        background: #fadbd8;
+        color: #a2352a;
+        padding: 1em;
+        border-radius: 0.25em;
+      }
+    </style>
   </head>
   <body>
-    <ps-email-capture></ps-email-capture>
+    <ps-email-capture
+      heading="Join our early access"
+      placeholder="Your Email"
+      button-text="Join"
+      subtext="No credit cards required"
+      success-msg="Thank you for submitting your email"
+      error-msg="There is an error"
+    ></ps-email-capture>
   </body>
 </html>
