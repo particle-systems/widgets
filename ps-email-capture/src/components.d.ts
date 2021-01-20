@@ -11,7 +11,6 @@ export namespace Components {
         "buttonText": string;
         "email": string;
         "heading": string;
-        "key": string;
         "loc": string;
         "placeholder": string;
         "subtext": string;
@@ -35,7 +34,6 @@ declare namespace LocalJSX {
         "buttonText"?: string;
         "email"?: string;
         "heading"?: string;
-        "key"?: string;
         "loc"?: string;
         "placeholder"?: string;
         "subtext"?: string;

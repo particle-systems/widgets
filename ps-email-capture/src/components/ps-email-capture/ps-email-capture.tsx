@@ -14,7 +14,6 @@ export class PsEmailCapture {
   @Prop() subtext: string;
   @Prop() successMsg: string;
 
-  @Prop() key: string;
   @Prop() email: string;
   @Prop() loc: string;
 
@@ -24,9 +23,8 @@ export class PsEmailCapture {
 
   private handleSubmit() {
     this.state = 'submitting';
-    const enpointUrl: string = 'http://localhost:3000/email-capture';
+    const enpointUrl: string = 'http://localhost:1153/email-capture';
     const payload = {
-      key: this.key,
       email: this.email,
       loc: this.loc,
     };
@@ -65,6 +63,10 @@ export class PsEmailCapture {
     this.email = event.target.value;
   }
 
+  private init() {
+    this.state = 'init';
+  }
+
   @Listen('keydown')
   handleKeyDown(ev: KeyboardEvent) {
     if (ev.keyCode === 13 && this.email.length > 0) if (this.isTextboxFocused === true) this.handleSubmit();
@@ -95,7 +97,18 @@ export class PsEmailCapture {
             {this.state === 'error' ? <p class="ps-ec-failed-msg">{this.errorMessage}</p> : ''}
           </div>
         ) : (
-          <div>{this.state === 'success' ? <p class="ps-ec-success-msg">{this.successMsg}</p> : ''}</div>
+          <div>
+            {this.state === 'success' ? (
+              <div>
+                <p class="ps-ec-success-msg">{this.successMsg}</p>
+                <button class="ps-ec-reset-button" onClick={() => this.init()}>
+                  Submit another email
+                </button>
+              </div>
+            ) : (
+              ''
+            )}
+          </div>
         )}
       </div>,
     ];
