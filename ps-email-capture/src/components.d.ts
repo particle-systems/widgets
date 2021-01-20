@@ -7,9 +7,12 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface PsEmailCapture {
+        "buttonActionText": string;
         "buttonText": string;
-        "errorMsg": string;
+        "email": string;
         "heading": string;
+        "key": string;
+        "loc": string;
         "placeholder": string;
         "subtext": string;
         "successMsg": string;
@@ -28,9 +31,12 @@ declare global {
 }
 declare namespace LocalJSX {
     interface PsEmailCapture {
+        "buttonActionText"?: string;
         "buttonText"?: string;
-        "errorMsg"?: string;
+        "email"?: string;
         "heading"?: string;
+        "key"?: string;
+        "loc"?: string;
         "placeholder"?: string;
         "subtext"?: string;
         "successMsg"?: string;

@@ -59,16 +59,22 @@
         padding: 1em;
         border-radius: 0.25em;
       }
+
+      .ps-ec-input-error {
+        border: 1px solid red;
+      }
     </style>
   </head>
   <body>
     <ps-email-capture
+      key="bcmcbhmaoe"
+      loc="test-page"
       heading="Join our early access"
       placeholder="Your Email"
       button-text="Join"
+      button-action-text="Joining"
       subtext="No credit cards required"
       success-msg="Thank you for submitting your email"
-      error-msg="There is an error"
     ></ps-email-capture>
   </body>
 </html>
