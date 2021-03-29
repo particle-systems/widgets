@@ -25,32 +25,41 @@ export class PsEmailCapture {
 
   private handleSubmit() {
     this.state = 'submitting';
-    // const enpointUrl: string = 'http://localhost:1153/email-capture';
-    // const payload = {
-    //   email: this.email,
-    //   tags: this.tagsArray,
-    // };
-    // const options = {
-    //   method: 'POST',
-    //   body: JSON.stringify(payload),
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json',
-    //     'Access-Control-Allow-Origin': '*',
-    //   },
-    // };
-    // fetch(enpointUrl, options)
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     this.state = data.status;
-    //     if (this.state === 'error') {
-    //       this.errorMessage = data.message;
-    //     }
-    //   })
-    //   .catch(error => {
-    //     console.log(error);
-    //     this.state = 'error';
-    //   });
+    if (this.tags.length > 0) {
+      this.tagsArray = this.tags.split(',').map(tag => {
+        return tag.trim();
+      });
+      console.log(this.tagsArray);
+    }
+    const enpointUrl: string = 'http://localhost:3334/email-capture';
+    const payload = {
+      key: this.key,
+      email: this.email,
+      tags: this.tagsArray,
+    };
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(payload),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+    };
+    fetch(enpointUrl, options)
+      .then(res => res.json())
+      .then(data => {
+        if (data.status === 'success') {
+          this.state = 'success';
+        } else if (data.status === 'failed') {
+          this.errorMessage = data.message;
+          this.state = 'failed';
+        }
+      })
+      .catch(error => {
+        console.log(error);
+        this.state = 'failed';
+      });
   }
 
   private handleTextboxFocus() {
