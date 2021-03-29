@@ -7,7 +7,7 @@
 **1.** Add the following `script` tag to the pages where you want to use the component
 
 ```
-<script type="module" src="https://unpkg.com/gec-particle/dist/gec-particle/gec-particle.esm.js"></script>
+<script type="module" src="https://unpkg.com/ps-email-capture/dist/ps-email-capture/ps-email-capture.esm.js"></script>
 ```
 
 **2.** Add the component to the website in the desired location
