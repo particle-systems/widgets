@@ -9,58 +9,60 @@
     <script nomodule src="/build/ps-email-capture.js"></script>
 
     <style>
-      .ps-ec-container {
+      ps-email-capture .container {
         width: 400px;
       }
-      .ps-ec-heading {
+      ps-email-capture .heading-text {
         margin-bottom: 0.5em;
         font-size: 1.5em;
+        font-family: sans-serif;
       }
 
-      .ps-ec-input {
+      ps-email-capture .input-group {
+        display: flex;
+      }
+
+      ps-email-capture .email-input-box {
         box-sizing: border-box;
         border: 1px solid rgba(0, 0, 0, 0.6);
         padding: 1em;
         margin-right: 0;
         font-size: 1em;
         width: 70%;
+        height: 50px;
       }
 
-      .ps-ec-submit-button {
-        padding: 1em;
+      ps-email-capture .submit-button {
+        padding: 0em;
         border: 0;
         margin-left: 0;
         font-size: 1em;
         border: 1px solid rgba(0, 0, 0, 0.6);
         width: 30%;
         border-left: 0;
+        background: #ccc;
+        height: 50px;
       }
 
-      .ps-ec-button:hover {
+      ps-email-capture .submit-button:hover {
         cursor: pointer;
       }
 
-      .ps-ec-subtext {
+      ps-email-capture .subtext {
         color: rgba(0, 0, 0, 0.6);
         font-family: sans-serif;
         margin-top: 0.5em;
         font-size: 0.8em;
       }
-      .ps-ec-success-msg {
-        background: #d4efdf;
-        color: #1b7a43;
-        padding: 1em;
-        border-radius: 0.25em;
-      }
 
-      .ps-ec-error-msg {
+      ps-email-capture .error-message {
         background: #fadbd8;
         color: #a2352a;
         padding: 1em;
         border-radius: 0.25em;
       }
 
-      .ps-ec-reset-button {
+      ps-email-capture .reset-button {
         border: 0;
         background: white;
         margin: 0;
@@ -68,8 +70,37 @@
         text-decoration: underline;
       }
 
-      .ps-ec-reset-button:hover {
+      ps-email-capture .reset-button:hover {
         cursor: pointer;
+      }
+
+      ps-email-capture .success-message {
+        background: #d4efdf;
+        color: #1b7a43;
+        padding: 1em;
+        border-radius: 0.25em;
+      }
+
+      ps-email-capture .spinner {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: #fff;
+        animation: spin 1s ease-in-out infinite;
+        -webkit-animation: spin 1s ease-in-out infinite;
+      }
+
+      @keyframes spin {
+        to {
+          -webkit-transform: rotate(360deg);
+        }
+      }
+      @-webkit-keyframes spin {
+        to {
+          -webkit-transform: rotate(360deg);
+        }
       }
     </style>
   </head>
