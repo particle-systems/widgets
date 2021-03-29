@@ -26,7 +26,7 @@
         width: 70%;
       }
 
-      .ps-ec-button {
+      .ps-ec-submit-button {
         padding: 1em;
         border: 0;
         margin-left: 0;
@@ -53,15 +53,11 @@
         border-radius: 0.25em;
       }
 
-      .ps-ec-failed-msg {
+      .ps-ec-error-msg {
         background: #fadbd8;
         color: #a2352a;
         padding: 1em;
         border-radius: 0.25em;
-      }
-
-      .ps-ec-input-error {
-        border: 1px solid red;
       }
 
       .ps-ec-reset-button {
@@ -79,13 +75,13 @@
   </head>
   <body>
     <ps-email-capture
-      loc="test-page"
-      heading="Join our early access"
-      placeholder="Your Email"
-      button-text="Join"
-      button-action-text="Joining"
-      subtext="No credit cards required"
-      success-msg="Thank you for submitting your email"
+      key=""
+      heading="Join our early invite list"
+      tags="homepage, test"
+      input-placeholder-text="Your email please"
+      submit-button-text="Join Now"
+      subtext="Get only 1 email / week"
+      success-message="Woohoo you're in"
     ></ps-email-capture>
   </body>
 </html>

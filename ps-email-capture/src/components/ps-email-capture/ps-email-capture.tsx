@@ -5,28 +5,29 @@ import { Component, h, Prop, State, Listen } from '@stencil/core';
   styleUrl: 'ps-email-capture.css',
 })
 export class PsEmailCapture {
-  @State() state: string = 'init';
-
-  @Prop() heading: string;
-  @Prop() placeholder: string;
-  @Prop() buttonText: string;
-  @Prop() buttonActionText: string;
-  @Prop() subtext: string;
-  @Prop() successMsg: string;
-
-  @Prop() email: string;
-  @Prop() loc: string;
-
-  private isTextboxFocused: boolean = false;
-  private errorMessage: string;
   inputBoxEl!: HTMLInputElement;
+
+  @State() state: string = 'success';
+
+  @Prop() heading: string = '';
+  @Prop() tags: string = '';
+  @Prop() inputPlaceholderText: string = '';
+  @Prop() submitButtonText: string = '';
+  @Prop() subtext: string = '';
+  @Prop() successMessage: string = '';
+  @Prop() key: string = '';
+
+  private email: string;
+  private tagsArray: Array<string>;
+  private isTextboxFocused: boolean = false;
+  private errorMessage: string = 'Oops! something went wrong';
 
   private handleSubmit() {
     this.state = 'submitting';
     const enpointUrl: string = 'http://localhost:1153/email-capture';
     const payload = {
       email: this.email,
-      loc: this.loc,
+      tags: this.tagsArray,
     };
     const options = {
       method: 'POST',
@@ -46,7 +47,7 @@ export class PsEmailCapture {
         }
       })
       .catch(error => {
-        console.log(`Error: ${error}`);
+        console.log(error);
         this.state = 'error';
       });
   }
@@ -73,44 +74,38 @@ export class PsEmailCapture {
   }
 
   render() {
-    return [
+    return (
       <div class="ps-ec-container">
-        {this.state != 'success' ? (
+        {this.state === 'init' || this.state === 'submitting' || this.state === 'failed' ? (
           <div>
-            {this.heading ? <h1 class="ps-ec-heading">{this.heading}</h1> : ''}
-            <div class="ps-ec-input-group">
+            <h1 class="ps-ec-heading">{this.heading.length > 0 ? this.heading : 'Get updates in your email'}</h1>
+            <div class="ps-ec-inputbutton-group">
               <input
                 type="email"
-                class={this.state === 'error' ? 'ps-ec-input ps-ec-input-error' : 'ps-ec-input'}
-                placeholder={this.placeholder}
+                class="ps-ec-input"
+                placeholder={this.inputPlaceholderText.length > 0 ? this.inputPlaceholderText : 'Enter email'}
                 disabled={this.state === 'submitting' ? true : false}
                 onInput={(event: UIEvent) => this.handleEmailInput(event)}
                 onFocus={() => this.handleTextboxFocus()}
                 onBlur={() => this.handleTextboxBlur()}
                 ref={el => (this.inputBoxEl = el as HTMLInputElement)}
               ></input>
-              <button class="ps-ec-button" disabled={this.state === 'submitting' ? true : false} onClick={() => this.handleSubmit()}>
-                {this.buttonText}
+              <button class="ps-ec-submit-button" disabled={this.state === 'submitting' ? true : false} onClick={() => this.handleSubmit()}>
+                {this.submitButtonText.length > 0 ? this.submitButtonText : 'Submit'}
               </button>
             </div>
-            {this.subtext ? <p class="ps-ec-subtext">{this.subtext}</p> : ''}
-            {this.state === 'error' ? <p class="ps-ec-failed-msg">{this.errorMessage}</p> : ''}
+            <p class="ps-ec-subtext">{this.subtext.length > 0 ? this.subtext : "Only 1 email per week. We don't spam :)"}</p>
+            {this.state === 'failed' ? <p class="ps-ec-error-msg">{this.errorMessage}</p> : ''}
           </div>
         ) : (
           <div>
-            {this.state === 'success' ? (
-              <div>
-                <p class="ps-ec-success-msg">{this.successMsg}</p>
-                <button class="ps-ec-reset-button" onClick={() => this.init()}>
-                  Submit another email
-                </button>
-              </div>
-            ) : (
-              ''
-            )}
+            <p class="ps-ec-success-msg">{this.successMessage.length > 0 ? this.successMessage : ''}</p>
+            <button class="ps-ec-reset-button" onClick={() => this.init()}>
+              Submit another email
+            </button>
           </div>
         )}
-      </div>,
-    ];
+      </div>
+    );
   }
 }
