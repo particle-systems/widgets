@@ -1,6 +1,9 @@
-# # Introduction
+# Introduction
 
 **ps-email-capture** is a customisable web component designed specifically to capture emails on your websites
+
+<br/>
+<br/>
 
 # Install using CDN
 
@@ -28,6 +31,9 @@ E.g. landing-page.html
 
 (other HTML below)
 ```
+
+<br/>
+<br/>
 
 # Styling
 
