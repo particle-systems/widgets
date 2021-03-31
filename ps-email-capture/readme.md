@@ -27,7 +27,7 @@ E.g. landing-page.html
     submit-button-text="Join Now"
     subtext="Get only 1 email / week"
     success-message="Congrats! you have joined our list"
-	btn-classes="btn btn-primary"
+	btn-classes="Your bootstrap button classes"
 ></ps-email-capture>
 
 (other HTML below)
