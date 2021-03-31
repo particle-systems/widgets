@@ -31,8 +31,8 @@ export class PsEmailCapture {
       });
       console.log(this.tagsArray);
     }
-    //const enpointUrl: string = 'http://localhost:3334/email-capture';
-    const endpointUrl: string = "https://api.particle.systems/email-capture";
+    //const endpointUrl: string = 'http://localhost:3334/email-capture';
+    const endpointUrl: string = 'https://api.particle.systems/email-capture';
     const payload = {
       key: this.key,
       email: this.email,
@@ -47,7 +47,7 @@ export class PsEmailCapture {
         'Access-Control-Allow-Origin': '*',
       },
     };
-    fetch(enpointUrl, options)
+    fetch(endpointUrl, options)
       .then(res => res.json())
       .then(data => {
         if (data.status === 'success') {
