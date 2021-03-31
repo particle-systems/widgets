@@ -9,78 +9,6 @@
     <script nomodule src="/build/ps-email-capture.js"></script>
 
     <style>
-      ps-email-capture .container {
-        width: 400px;
-      }
-      ps-email-capture .heading-text {
-        margin-bottom: 0.5em;
-        font-size: 1.5em;
-        font-family: sans-serif;
-      }
-
-      ps-email-capture .input-group {
-        display: flex;
-      }
-
-      ps-email-capture .email-input-box {
-        box-sizing: border-box;
-        border: 1px solid rgba(0, 0, 0, 0.6);
-        padding: 1em;
-        margin-right: 0;
-        font-size: 1em;
-        width: 70%;
-        height: 50px;
-      }
-
-      ps-email-capture .submit-button {
-        padding: 0em;
-        border: 0;
-        margin-left: 0;
-        font-size: 1em;
-        border: 1px solid rgba(0, 0, 0, 0.6);
-        width: 30%;
-        border-left: 0;
-        background: #ccc;
-        height: 50px;
-      }
-
-      ps-email-capture .submit-button:hover {
-        cursor: pointer;
-      }
-
-      ps-email-capture .subtext {
-        color: rgba(0, 0, 0, 0.6);
-        font-family: sans-serif;
-        margin-top: 0.5em;
-        font-size: 0.8em;
-      }
-
-      ps-email-capture .error-message {
-        background: #fadbd8;
-        color: #a2352a;
-        padding: 1em;
-        border-radius: 0.25em;
-      }
-
-      ps-email-capture .reset-button {
-        border: 0;
-        background: white;
-        margin: 0;
-        padding: 0;
-        text-decoration: underline;
-      }
-
-      ps-email-capture .reset-button:hover {
-        cursor: pointer;
-      }
-
-      ps-email-capture .success-message {
-        background: #d4efdf;
-        color: #1b7a43;
-        padding: 1em;
-        border-radius: 0.25em;
-      }
-
       ps-email-capture .spinner {
         display: inline-block;
         width: 20px;
@@ -103,6 +31,17 @@
         }
       }
     </style>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <ps-email-capture
@@ -113,6 +52,7 @@
       submit-button-text="Join Now"
       subtext="Get only 1 email / week"
       success-message="Woohoo you're in"
+      btn-classes="btn btn-primary"
     ></ps-email-capture>
   </body>
 </html>

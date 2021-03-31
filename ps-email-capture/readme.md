@@ -1,6 +1,6 @@
 # Introduction
 
-**ps-email-capture** is a customisable web component designed specifically to capture emails on your websites
+**ps-email-capture** is a customisable web component designed specifically to capture emails on your websites. It is one of the many UI components offered by [Particle Systems](https://particle.systems) that enables you to implement dynamic features in your static website
 
 <br/>
 <br/>
