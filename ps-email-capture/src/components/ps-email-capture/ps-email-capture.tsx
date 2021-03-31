@@ -16,7 +16,7 @@ export class PsEmailCapture {
   @Prop() spinnerUrl: string = '';
   @Prop() subtext: string = '';
   @Prop() successMessage: string = '';
-  @Prop() key: string = '';
+  @Prop() integrationKey: string = '';
 
   private email: string;
   private tagsArray: Array<string>;
@@ -29,12 +29,11 @@ export class PsEmailCapture {
       this.tagsArray = this.tags.split(',').map(tag => {
         return tag.trim();
       });
-      console.log(this.tagsArray);
     }
-    //const endpointUrl: string = 'http://localhost:3334/email-capture';
-    const endpointUrl: string = 'https://api.particle.systems/email-capture';
+    const endpointUrl: string = 'https://api.particle.systems/email-capture/';
+    // const endpointUrl: string = 'http://localhost:3334/email-capture';
     const payload = {
-      key: this.key,
+      key: this.integrationKey,
       email: this.email,
       tags: this.tagsArray,
     };

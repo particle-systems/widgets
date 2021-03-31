@@ -9,7 +9,7 @@ export namespace Components {
     interface PsEmailCapture {
         "heading": string;
         "inputPlaceholderText": string;
-        "key": string;
+        "integrationKey": string;
         "spinnerUrl": string;
         "submitButtonText": string;
         "subtext": string;
@@ -32,7 +32,7 @@ declare namespace LocalJSX {
     interface PsEmailCapture {
         "heading"?: string;
         "inputPlaceholderText"?: string;
-        "key"?: string;
+        "integrationKey"?: string;
         "spinnerUrl"?: string;
         "submitButtonText"?: string;
         "subtext"?: string;

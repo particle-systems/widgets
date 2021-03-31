@@ -20,7 +20,7 @@ E.g. landing-page.html
 (other HTML above)
 
 <ps-email-capture
-    key="your PS key"
+    integration-key="Your Integration Key"
     heading="Join our early invite list"
     tags="landing-page, after-hero-section"
     input-placeholder-text="Your email please"
