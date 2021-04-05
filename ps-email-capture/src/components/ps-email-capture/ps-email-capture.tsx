@@ -10,12 +10,12 @@ export class PsEmailCapture {
   @State() state: string = 'init';
   @State() isEmailValid: boolean = false;
 
-  @Prop() heading: string = '';
-  @Prop() tags: string = '';
-  @Prop() inputPlaceholderText: string = '';
-  @Prop() submitButtonText: string = '';
-  @Prop() subtext: string = '';
-  @Prop() successMessage: string = '';
+  @Prop() heading: string = 'Subscribe to our list';
+  @Prop() tags: string = 'landing-page';
+  @Prop() inputPlaceholderText: string = 'Your Email';
+  @Prop() submitButtonText: string = 'Subscribe';
+  @Prop() subtext: string = 'We dont spam :)';
+  @Prop() successMessage: string = 'You have subscribed to our list';
   @Prop() integrationKey: string = '';
   @Prop() btnClasses: string = '';
 
@@ -117,11 +117,7 @@ export class PsEmailCapture {
                 onBlur={() => this.handleTextboxBlur()}
                 ref={el => (this.inputBoxEl = el as HTMLInputElement)}
               ></input>
-              <button
-                class={this.btnClasses.length > 0 ? this.btnClasses : 'submit-button'}
-                disabled={this.state === 'submitting' ? true : false}
-                onClick={() => this.handleSubmit()}
-              >
+              <button class={`submit-button ${this.btnClasses}`} disabled={this.state === 'submitting' ? true : false} onClick={() => this.handleSubmit()}>
                 {this.state === 'submitting' ? <div class="spinner"></div> : this.submitButtonText}
               </button>
             </div>
