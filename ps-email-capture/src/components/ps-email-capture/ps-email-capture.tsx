@@ -8,21 +8,22 @@ export class PsEmailCapture {
   inputBoxEl!: HTMLInputElement;
 
   @State() state: string = 'init';
+  @State() isEmailValid: boolean = false;
 
-  @Prop() heading: string = '';
-  @Prop() tags: string = '';
-  @Prop() inputPlaceholderText: string = '';
-  @Prop() submitButtonText: string = '';
-  @Prop() spinnerUrl: string = '';
-  @Prop() subtext: string = '';
-  @Prop() successMessage: string = '';
-  @Prop() integrationKey: string = '';
-  @Prop() btnClasses: string = '';
+  @Prop() heading: string;
+  @Prop() tags: string;
+  @Prop() inputPlaceholderText: string;
+  @Prop() submitButtonText: string;
+  @Prop() subtext: string;
+  @Prop() successMessage: string;
+  @Prop() integrationKey: string;
+  @Prop() btnClasses: string;
 
-  private email: string;
+  private email: string = '';
   private tagsArray: Array<string>;
   private isTextboxFocused: boolean = false;
   private errorMessage: string = 'Oops! something went wrong';
+  private emailRegex: any = /\S+@\S+\.\S+/;
 
   private handleSubmit() {
     this.state = 'submitting';
@@ -34,8 +35,8 @@ export class PsEmailCapture {
     const endpointUrl: string = 'https://api.particle.systems/email-capture/';
     // const endpointUrl: string = 'http://localhost:3334/email-capture';
     const payload = {
-      key: this.integrationKey,
-      email: this.email,
+      key: this.integrationKey.trim(),
+      email: this.email.trim(),
       tags: this.tagsArray,
     };
     const options = {
@@ -72,11 +73,20 @@ export class PsEmailCapture {
   }
 
   private handleEmailInput(event) {
-    this.email = event.target.value;
+    if (event.target.value) {
+      if (event.target.value.trim()) {
+        this.email = event.target.value;
+        this.isEmailValid = this.emailValidator(this.email);
+      }
+    }
+    if (this.state === 'failed') {
+      this.state = 'init';
+    }
+    console.log(`isValidEmail: ${this.isEmailValid}`);
   }
 
-  private init() {
-    this.state = 'init';
+  emailValidator(email: string) {
+    return this.emailRegex.test(email);
   }
 
   @Listen('keydown')
@@ -89,12 +99,12 @@ export class PsEmailCapture {
       <div class="container">
         {this.state === 'init' || this.state === 'submitting' || this.state === 'failed' ? (
           <div>
-            <h1 class="heading-text">{this.heading.length > 0 ? this.heading : 'Get updates in your email'}</h1>
+            <h1 class="heading-text">{this.heading}</h1>
             <div class="input-group">
               <input
                 type="email"
-                class="email-input-box"
-                placeholder={this.inputPlaceholderText.length > 0 ? this.inputPlaceholderText : 'Enter email'}
+                class={`email-input-box ${this.email.length > 0 ? (this.isEmailValid ? 'valid-email' : 'invalid-email') : ''}`}
+                placeholder={this.inputPlaceholderText}
                 disabled={this.state === 'submitting' ? true : false}
                 onInput={(event: UIEvent) => this.handleEmailInput(event)}
                 onFocus={() => this.handleTextboxFocus()}
@@ -106,18 +116,15 @@ export class PsEmailCapture {
                 disabled={this.state === 'submitting' ? true : false}
                 onClick={() => this.handleSubmit()}
               >
-                {this.state === 'submitting' ? <div class="spinner"></div> : this.submitButtonText.length > 0 ? this.submitButtonText : 'Submit'}
+                {this.state === 'submitting' ? <div class="spinner"></div> : this.submitButtonText}
               </button>
             </div>
-            <p class="subtext">{this.subtext.length > 0 ? this.subtext : "Only 1 email per week. We don't spam :)"}</p>
+            <p class="subtext">{this.subtext}</p>
             {this.state === 'failed' ? <p class="error-message">{this.errorMessage}</p> : ''}
           </div>
         ) : (
           <div>
             <p class="success-message">{this.successMessage.length > 0 ? this.successMessage : ''}</p>
-            <button class="reset-button" onClick={() => this.init()}>
-              Submit another email
-            </button>
           </div>
         )}
       </div>

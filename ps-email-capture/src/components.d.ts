@@ -11,7 +11,6 @@ export namespace Components {
         "heading": string;
         "inputPlaceholderText": string;
         "integrationKey": string;
-        "spinnerUrl": string;
         "submitButtonText": string;
         "subtext": string;
         "successMessage": string;
@@ -35,7 +34,6 @@ declare namespace LocalJSX {
         "heading"?: string;
         "inputPlaceholderText"?: string;
         "integrationKey"?: string;
-        "spinnerUrl"?: string;
         "submitButtonText"?: string;
         "subtext"?: string;
         "successMessage"?: string;

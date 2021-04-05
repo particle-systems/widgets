@@ -20,6 +20,14 @@
         -webkit-animation: spin 1s ease-in-out infinite;
       }
 
+      ps-email-capture .invalid-email {
+        outline: none;
+      }
+
+      ps-email-capture .valid-email {
+        outline: none;
+      }
+
       @keyframes spin {
         to {
           -webkit-transform: rotate(360deg);
@@ -31,28 +39,17 @@
         }
       }
     </style>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-      crossorigin="anonymous"
-    ></script>
   </head>
   <body>
     <ps-email-capture
       integration-key="ada3bdd7615fb48dea0e5f3e3c1a481c961d1e0d0b79bc51dd81c41d8f198dbf"
-      heading="Join our early invite list"
+      heading="Get updates directly in your email"
       tags="tag1, tag2, tag3 , tag4"
-      input-placeholder-text="Your email please"
-      submit-button-text="Join Now"
-      subtext="Get only 1 email / week"
-      success-message="Woohoo you're in"
-      btn-classes="btn btn-primary"
+      input-placeholder-text="Your Email"
+      submit-button-text="Subscribe Now"
+      subtext="We send one email / week"
+      success-message=""
+      btn-classes=""
     ></ps-email-capture>
   </body>
 </html>
