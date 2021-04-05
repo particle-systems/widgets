@@ -10,14 +10,14 @@ export class PsEmailCapture {
   @State() state: string = 'init';
   @State() isEmailValid: boolean = false;
 
-  @Prop() heading: string;
-  @Prop() tags: string;
-  @Prop() inputPlaceholderText: string;
-  @Prop() submitButtonText: string;
-  @Prop() subtext: string;
-  @Prop() successMessage: string;
-  @Prop() integrationKey: string;
-  @Prop() btnClasses: string;
+  @Prop() heading: string = '';
+  @Prop() tags: string = '';
+  @Prop() inputPlaceholderText: string = '';
+  @Prop() submitButtonText: string = '';
+  @Prop() subtext: string = '';
+  @Prop() successMessage: string = '';
+  @Prop() integrationKey: string = '';
+  @Prop() btnClasses: string = '';
 
   private email: string = '';
   private tagsArray: Array<string>;
