@@ -26,6 +26,12 @@ export class PsEmailCapture {
   private emailRegex: any = /\S+@\S+\.\S+/;
 
   private handleSubmit() {
+    if (!this.isEmailValid) {
+      this.errorMessage = 'Please enter a valid email';
+      this.state = 'failed';
+      this.inputBoxEl.value = '';
+      return;
+    }
     this.state = 'submitting';
     if (this.tags.length > 0) {
       this.tagsArray = this.tags.split(',').map(tag => {
@@ -103,7 +109,7 @@ export class PsEmailCapture {
             <div class="input-group">
               <input
                 type="email"
-                class={`email-input-box ${this.email.length > 0 ? (this.isEmailValid ? 'valid-email' : 'invalid-email') : ''}`}
+                class={`email-input ${this.email.length > 0 ? (this.isEmailValid ? 'valid-email-input' : 'invalid-email-input') : ''}`}
                 placeholder={this.inputPlaceholderText}
                 disabled={this.state === 'submitting' ? true : false}
                 onInput={(event: UIEvent) => this.handleEmailInput(event)}

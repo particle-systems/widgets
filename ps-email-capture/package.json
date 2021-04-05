@@ -1,7 +1,7 @@
 {
   "name": "ps-email-capture",
-  "version": "0.0.9",
-  "description": "Capture email on your website and send it directly to your cloud apps",
+  "version": "0.0.10",
+  "description": "Capture email on static websites and send it to Mailchimp, Airtable and other apps",
   "main": "dist/index.cjs.js",
   "module": "dist/custom-elements/index.js",
   "es2015": "dist/esm/index.mjs",
@@ -13,6 +13,12 @@
   "files": [
     "dist/",
     "loader/"
+  ],
+  "keywords": [
+    "component",
+    "stencil",
+    "ui",
+    "web component"
   ],
   "scripts": {
     "build": "stencil build --docs",
