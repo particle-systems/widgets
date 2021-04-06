@@ -3,12 +3,64 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <title>Stencil Component Starter</title>
+    <title>ps-contact-form</title>
 
     <script type="module" src="/build/ps-contact-form.esm.js"></script>
     <script nomodule src="/build/ps-contact-form.js"></script>
   </head>
   <body>
-    <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
+    <ps-contact-form></ps-contact-form>
   </body>
+
+  <script>
+    // const formSchema = [
+    //   {
+    //     el: 'input',
+    //     type: 'text',
+    //     name: 'fname',
+    //     placeholder: 'First Name',
+    //   },
+    //   {
+    //     el: 'input',
+    //     type: 'text',
+    //     name: 'lname',
+    //     placeholder: 'Last Name',
+    //   },
+    //   {
+    //     el: 'input',
+    //     type: 'email',
+    //     name: 'email',
+    //     placeholder: 'Your email',
+    //   },
+    //   {
+    //     el: 'textarea',
+    //     name: 'message',
+    //     placeholder: 'Type your message',
+    //   },
+    // ];
+
+    const formSchema = [
+      {
+        field: 'textField',
+        type: 'text',
+        name: 'fullName',
+        placeholder: 'Full Name',
+      },
+      {
+        field: 'textField',
+        type: 'email',
+        name: 'email',
+        placeholder: 'Your email',
+      },
+      {
+        field: 'textareaField',
+      },
+      {
+        field: 'submitField',
+        value: 'Submit',
+      },
+    ];
+    const contactFormEl = document.querySelector('ps-contact-form');
+    contactFormEl.schema = formSchema;
+  </script>
 </html>
