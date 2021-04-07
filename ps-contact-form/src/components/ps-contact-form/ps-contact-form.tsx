@@ -17,9 +17,13 @@ export class PsContactForm {
         input.name = item.name;
         input.placeholder = item.placeholder;
         this.formContainer.appendChild(input);
+        let lineBreak = document.createElement('br');
+        this.formContainer.appendChild(lineBreak);
       } else if (item.field === 'textareaField') {
         let textarea = document.createElement('textarea');
         this.formContainer.appendChild(textarea);
+        let lineBreak = document.createElement('br');
+        this.formContainer.appendChild(lineBreak);
       } else if (item.field === 'submitField') {
         let submitButton = document.createElement('button');
         submitButton.innerText = item.value;
