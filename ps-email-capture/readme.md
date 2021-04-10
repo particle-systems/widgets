@@ -10,7 +10,7 @@
 **1.** Add the following `script` tag to the pages where you want to use the component
 
 ```
-<script type="module" src="https://unpkg.com/ps-email-capture/dist/ps-email-capture/ps-email-capture.esm.js"></script>
+<script type="module" src="https://unpkg.com/ps-email-capture/dist/ps-email-capture/ps-email-capture.esm.js" async></script>
 ```
 
 **2.** Add the component to the website in the desired location
@@ -25,7 +25,7 @@ E.g. landing-page.html
     input-placeholder-text="Your email"
     submit-button-text="Join Now"
     success-message="Congrats! you have joined our list"
-	btn-classes="Your bootstrap/Foundation button classes e.g. btn btn-primary"
+    btn-classes="Your bootstrap/Foundation button classes e.g. btn btn-primary"
 ></ps-email-capture>
 
 (other HTML below)
@@ -39,14 +39,22 @@ E.g. landing-page.html
 After adding the component to your codebase as shown above, copy paste the following CSS into your stylesheet and tweak around until you get your desired look :)
 
 ```
+      /* Heading above the component */
+      .heading-text {
+        margin-bottom: 0.25em;
+      }
+
+      /* Subtext below the component (for social proof) */
+      .subtext {
+        color: rgba(0, 0, 0, 0.6);
+        margin-top: 0.5em;
+        font-size: 0.9em;
+      }
+
+      /* Start of Component Styles */
       /* Defines component width */
       ps-email-capture .container {
         width: 500px;
-      }
-
-      /* Component heading styles */
-      ps-email-capture .heading-text {
-        margin-bottom: 0.5em;
       }
 
       /* .input-group is the container of the inputbox and submit button */
@@ -71,13 +79,6 @@ After adding the component to your codebase as shown above, copy paste the follo
         border: 1px solid rgba(0, 0, 0, 0.6);
         width: 30%;
         border-left: 0;
-      }
-
-      /* Subtext styles */
-      ps-email-capture .subtext {
-        color: rgba(0, 0, 0, 0.6);
-        margin-top: 0.5em;
-        font-size: 0.9em;
       }
 
       /* Error message styles */
@@ -155,4 +156,5 @@ After adding the component to your codebase as shown above, copy paste the follo
           border-top: 0;
         }
       }
+      /* End of Component Styles */
 ```
