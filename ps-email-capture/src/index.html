@@ -5,20 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <title>ps-email-capture</title>
 
-    <!-- <script type="module" src="/build/ps-email-capture.esm.js"></script>
-    <script nomodule src="/build/ps-email-capture.js"></script> -->
+    <script type="module" src="/build/ps-email-capture.esm.js"></script>
+    <script nomodule src="/build/ps-email-capture.js"></script>
 
-    <script type="module" src="https://unpkg.com/ps-email-capture/dist/ps-email-capture/ps-email-capture.esm.js"></script>
+    <!-- <script type="module" src="https://unpkg.com/ps-email-capture/dist/ps-email-capture/ps-email-capture.esm.js"></script> -->
 
     <style>
+      /* Heading above the component */
+      .heading-text {
+        margin-bottom: 0.25em;
+      }
+
+      /* Subtext below the component (for social proof) */
+      .subtext {
+        color: rgba(0, 0, 0, 0.6);
+        margin-top: 0.5em;
+        font-size: 0.9em;
+      }
+
+      /* Start of Component Styles */
       /* Defines component width */
       ps-email-capture .container {
         width: 500px;
-      }
-
-      /* Component heading styles */
-      ps-email-capture .heading-text {
-        margin-bottom: 0.5em;
       }
 
       /* .input-group is the container of the inputbox and submit button */
@@ -43,13 +51,6 @@
         border: 1px solid rgba(0, 0, 0, 0.6);
         width: 30%;
         border-left: 0;
-      }
-
-      /* Subtext styles */
-      ps-email-capture .subtext {
-        color: rgba(0, 0, 0, 0.6);
-        margin-top: 0.5em;
-        font-size: 0.9em;
       }
 
       /* Error message styles */
@@ -127,18 +128,19 @@
           border-top: 0;
         }
       }
+      /* End of Component Styles */
     </style>
   </head>
   <body>
+    <h1 class="heading-text">Get updates directly in your email</h1>
     <ps-email-capture
       integration-key="ada3bdd7615fb48dea0e5f3e3c1a481c961d1e0d0b79bc51dd81c41d8f198dbf"
-      heading="Get updates directly in your email"
       tags="tag1, tag2, tag3 , tag4"
       input-placeholder-text="Your Email"
       submit-button-text="Subscribe Now"
-      subtext="We send one email / week"
       success-message="Thanks for joining our list. We will keep you updated"
       btn-classes=""
     ></ps-email-capture>
+    <p class="subtext">Join 3000+ people who use our newsletter to improve business sales</p>
   </body>
 </html>

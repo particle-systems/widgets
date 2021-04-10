@@ -21,11 +21,9 @@ E.g. landing-page.html
 
 <ps-email-capture
     integration-key="Your Integration Key"
-    heading="Join our early invite list"
     tags="landing-page, after-hero-section"
     input-placeholder-text="Your email"
     submit-button-text="Join Now"
-    subtext="We don't spam. Get 1 email every Friday"
     success-message="Congrats! you have joined our list"
 	btn-classes="Your bootstrap/Foundation button classes e.g. btn btn-primary"
 ></ps-email-capture>

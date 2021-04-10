@@ -10,11 +10,9 @@ export class PsEmailCapture {
   @State() state: string = 'init';
   @State() isEmailValid: boolean = false;
 
-  @Prop() heading: string = 'Subscribe to our list';
   @Prop() tags: string = 'landing-page';
   @Prop() inputPlaceholderText: string = 'Your Email';
   @Prop() submitButtonText: string = 'Subscribe';
-  @Prop() subtext: string = 'We dont spam :)';
   @Prop() successMessage: string = 'You have subscribed to our list';
   @Prop() integrationKey: string = '';
   @Prop() btnClasses: string = '';
@@ -105,7 +103,6 @@ export class PsEmailCapture {
       <div class="container">
         {this.state === 'init' || this.state === 'submitting' || this.state === 'failed' ? (
           <div>
-            <h1 class="heading-text">{this.heading}</h1>
             <div class="input-group">
               <input
                 type="email"
@@ -121,13 +118,10 @@ export class PsEmailCapture {
                 {this.state === 'submitting' ? <div class="spinner"></div> : this.submitButtonText}
               </button>
             </div>
-            <p class="subtext">{this.subtext}</p>
             {this.state === 'failed' ? <p class="error-message">{this.errorMessage}</p> : ''}
           </div>
         ) : (
-          <div>
-            <p class="success-message">{this.successMessage.length > 0 ? this.successMessage : ''}</p>
-          </div>
+          <p class="success-message">{this.successMessage.length > 0 ? this.successMessage : ''}</p>
         )}
       </div>
     );
