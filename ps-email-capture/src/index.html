@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <title>ps-email-capture</title>
 
-    <!-- <script type="module" src="/build/ps-email-capture.esm.js"></script>
-    <script nomodule src="/build/ps-email-capture.js"></script> -->
+    <script type="module" src="/build/ps-email-capture.esm.js"></script>
+    <script nomodule src="/build/ps-email-capture.js"></script>
 
-    <script async type="module" src="https://unpkg.com/ps-email-capture/dist/ps-email-capture/ps-email-capture.esm.js"></script>
+    <!-- <script async type="module" src="https://unpkg.com/ps-email-capture/dist/ps-email-capture/ps-email-capture.esm.js"></script> -->
 
     <style>
       /* Heading above the component */
@@ -133,14 +133,43 @@
   </head>
   <body>
     <h1 class="heading-text">Get updates directly in your email</h1>
+
     <ps-email-capture
       integration-key="ada3bdd7615fb48dea0e5f3e3c1a481c961d1e0d0b79bc51dd81c41d8f198dbf"
       tags="tag1, tag2, tag3 , tag4"
       input-placeholder-text="Your Email"
       submit-button-text="Subscribe Now"
       success-message="Thanks for joining our list. We will keep you updated"
+      invalid-email-message="email tu bhul hoise"
+      failure-message="kiba golmaal hoise"
       btn-classes=""
+      events="enabled"
     ></ps-email-capture>
+
     <p class="subtext">Join 3000+ people who use our newsletter to improve business sales</p>
+
+    <script type="text/javascript">
+      const emailCaptureEl = document.querySelector('ps-email-capture');
+
+      emailCaptureEl.addEventListener('ps-invalid-email', () => {
+        console.log('User entered an invalid email');
+      });
+
+      emailCaptureEl.addEventListener('ps-email-submission', () => {
+        console.log('User has attempted email submission');
+      });
+
+      emailCaptureEl.addEventListener('ps-email-submission-success', () => {
+        console.log('Email submission is successful');
+      });
+
+      emailCaptureEl.addEventListener('ps-email-submission-failed', () => {
+        console.log('Email submission failer');
+      });
+
+      emailCaptureEl.addEventListener('ps-email-submission-error', () => {
+        console.log('An error occurred while submission');
+      });
+    </script>
   </body>
 </html>
