@@ -145,6 +145,9 @@ After adding the component to your codebase as shown above, copy paste the follo
   }
 ```
 
+<br/>
+<br/>
+
 # Events
 
 `ps-email-capture` emits 5 different types of events. The following code block highlights how to capture the events, the event names and when they are triggered
