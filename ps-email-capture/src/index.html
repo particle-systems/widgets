@@ -143,7 +143,6 @@
       invalid-email-message="email tu bhul hoise"
       failure-message="kiba golmaal hoise"
       btn-classes=""
-      events="enabled"
     ></ps-email-capture>
 
     <p class="subtext">Join 3000+ people who use our newsletter to improve business sales</p>
@@ -151,24 +150,24 @@
     <script type="text/javascript">
       const emailCaptureEl = document.querySelector('ps-email-capture');
 
-      emailCaptureEl.addEventListener('ps-invalid-email', () => {
-        console.log('User entered an invalid email');
+      emailCaptureEl.addEventListener('ps-ec-invalid-email-ev', () => {
+        console.log('This event occured because user entered an invalid email');
       });
 
-      emailCaptureEl.addEventListener('ps-email-submission', () => {
-        console.log('User has attempted email submission');
+      emailCaptureEl.addEventListener('ps-ec-submission-ev', () => {
+        console.log('This event occured because user has attempted email submission');
       });
 
-      emailCaptureEl.addEventListener('ps-email-submission-success', () => {
-        console.log('Email submission is successful');
+      emailCaptureEl.addEventListener('ps-ec-submission-success-ev', () => {
+        console.log('This event occured because email submission is successful');
       });
 
-      emailCaptureEl.addEventListener('ps-email-submission-failed', () => {
-        console.log('Email submission failer');
+      emailCaptureEl.addEventListener('ps-ec-submission-failed-ev', () => {
+        console.log('This event occured because email submission failed');
       });
 
-      emailCaptureEl.addEventListener('ps-email-submission-error', () => {
-        console.log('An error occurred while submission');
+      emailCaptureEl.addEventListener('ps-ec-submission-error-ev', () => {
+        console.log('This event occured because an error occurred while submission');
       });
     </script>
   </body>

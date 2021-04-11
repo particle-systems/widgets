@@ -18,7 +18,6 @@ export class PsEmailCapture {
   @Prop() invalidEmailMessage: string = 'Please enter a valid email';
   @Prop() integrationKey: string = '';
   @Prop() btnClasses: string = '';
-  @Prop() events: string = 'disabled';
 
   private email: string = '';
   private tagsArray: Array<string>;
@@ -27,31 +26,31 @@ export class PsEmailCapture {
   private emailRegex: any = /\S+@\S+\.\S+/;
 
   @Event({
-    eventName: 'ps-invalid-email',
+    eventName: 'ps-ec-invalid-email-ev',
     bubbles: true,
   })
   invalidEmailEvent: EventEmitter;
 
   @Event({
-    eventName: 'ps-email-submission',
+    eventName: 'ps-ec-submission-ev',
     bubbles: true,
   })
   emailSubmissionEvent: EventEmitter;
 
   @Event({
-    eventName: 'ps-email-submission-success',
+    eventName: 'ps-ec-submission-success-ev',
     bubbles: true,
   })
   emailSubmissionSuccessEvent: EventEmitter;
 
   @Event({
-    eventName: 'ps-email-submission-failed',
+    eventName: 'ps-ec-submission-failed-ev',
     bubbles: true,
   })
   emailSubmissionFailedEvent: EventEmitter;
 
   @Event({
-    eventName: 'ps-email-submission-error',
+    eventName: 'ps-ec-submission-error-ev',
     bubbles: true,
   })
   emailSubmissionErrorEvent: EventEmitter;
@@ -136,10 +135,6 @@ export class PsEmailCapture {
   }
 
   private emitEvent(eventName) {
-    if (this.events != 'enabled') {
-      return;
-    }
-
     if (eventName === 'invalid-email') {
       this.invalidEmailEvent.emit();
     } else if (eventName === 'email-submission') {
