@@ -7,7 +7,16 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface PsContactForm {
-        "schema": any;
+        "buttonClasses": string;
+        "emailPlaceholderText": string;
+        "fullNamePlaceholderText": string;
+        "inputClasses": string;
+        "integrationKey": string;
+        "messagePlaceholderText": string;
+        "submitButtonText": string;
+        "successMessage": string;
+        "tags": string;
+        "textAreaClasses": string;
     }
 }
 declare global {
@@ -23,7 +32,23 @@ declare global {
 }
 declare namespace LocalJSX {
     interface PsContactForm {
-        "schema"?: any;
+        "buttonClasses"?: string;
+        "emailPlaceholderText"?: string;
+        "fullNamePlaceholderText"?: string;
+        "inputClasses"?: string;
+        "integrationKey"?: string;
+        "messagePlaceholderText"?: string;
+        "onPs-cf-invalid-email-ev"?: (event: CustomEvent<any>) => void;
+        "onPs-cf-invalid-fullname-ev"?: (event: CustomEvent<any>) => void;
+        "onPs-cf-invalid-message-ev"?: (event: CustomEvent<any>) => void;
+        "onPs-cf-submission-error-ev"?: (event: CustomEvent<any>) => void;
+        "onPs-cf-submission-ev"?: (event: CustomEvent<any>) => void;
+        "onPs-cf-submission-failed-ev"?: (event: CustomEvent<any>) => void;
+        "onPs-cf-submission-success-ev"?: (event: CustomEvent<any>) => void;
+        "submitButtonText"?: string;
+        "successMessage"?: string;
+        "tags"?: string;
+        "textAreaClasses"?: string;
     }
     interface IntrinsicElements {
         "ps-contact-form": PsContactForm;
