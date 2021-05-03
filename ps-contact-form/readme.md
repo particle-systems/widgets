@@ -1,75 +1,184 @@
-![Built With Stencil](https://img.shields.io/badge/-Built%20With%20Stencil-16161d.svg?logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjIuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI%2BCjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI%2BCgkuc3Qwe2ZpbGw6I0ZGRkZGRjt9Cjwvc3R5bGU%2BCjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik00MjQuNywzNzMuOWMwLDM3LjYtNTUuMSw2OC42LTkyLjcsNjguNkgxODAuNGMtMzcuOSwwLTkyLjctMzAuNy05Mi43LTY4LjZ2LTMuNmgzMzYuOVYzNzMuOXoiLz4KPHBhdGggY2xhc3M9InN0MCIgZD0iTTQyNC43LDI5Mi4xSDE4MC40Yy0zNy42LDAtOTIuNy0zMS05Mi43LTY4LjZ2LTMuNkgzMzJjMzcuNiwwLDkyLjcsMzEsOTIuNyw2OC42VjI5Mi4xeiIvPgo8cGF0aCBjbGFzcz0ic3QwIiBkPSJNNDI0LjcsMTQxLjdIODcuN3YtMy42YzAtMzcuNiw1NC44LTY4LjYsOTIuNy02OC42SDMzMmMzNy45LDAsOTIuNywzMC43LDkyLjcsNjguNlYxNDEuN3oiLz4KPC9zdmc%2BCg%3D%3D&colorA=16161d&style=flat-square)
+# Introduction
 
-# Stencil Component Starter
+`ps-contact-form` is the quintessential contact form that every website needs. It is one of the many UI components offered by [Particle Systems](https://particle.systems) that enables you to implement dynamic features in your static website
 
-This is a starter project for building a standalone Web Component using Stencil.
+<br/>
+<br/>
 
-Stencil is also great for building entire apps. For that, use the [stencil-app-starter](https://github.com/ionic-team/stencil-app-starter) instead.
+# Install using CDN
 
-# Stencil
+**1.** Add the following `script` tag to the pages where you want to use the component
 
-Stencil is a compiler for building fast web apps using Web Components.
-
-Stencil combines the best concepts of the most popular frontend frameworks into a compile-time rather than run-time tool.  Stencil takes TypeScript, JSX, a tiny virtual DOM layer, efficient one-way data binding, an asynchronous rendering pipeline (similar to React Fiber), and lazy-loading out of the box, and generates 100% standards-based Web Components that run in any browser supporting the Custom Elements v1 spec.
-
-Stencil components are just Web Components, so they work in any major framework or with no framework at all.
-
-## Getting Started
-
-To start building a new web component using Stencil, clone this repo to a new directory:
-
-```bash
-git clone https://github.com/ionic-team/stencil-component-starter.git my-component
-cd my-component
-git remote rm origin
+```
+<script type="module" src="https://unpkg.com/ps-contact-form/dist/ps-contact-form/ps-contact-form.esm.js" async></script>
 ```
 
-and run:
+**2.** Add the component to the website in the desired location
 
-```bash
-npm install
-npm start
+```
+(landing-page.html)
+
+
+  <ps-contact-form
+      integration-key="Your Integration Key"
+      full-name-placeholder-text="Full Name"
+      email-placeholder-text="Email"
+      message-placeholder-text="Message"
+      submit-button-text="Submit"
+      success-message="Thank you for contacting us, we will get back to your shortly"
+      tags="homepage, before-footer"
+    ></ps-contact-form>
 ```
 
-To build the component for production, run:
+<br/>
+<br/>
 
-```bash
-npm run build
+# Styling
+
+After adding the component to your codebase as shown above, copy paste the following CSS into your stylesheet and tweak around until you get your desired look :)
+
+```
+  /* Defines component width */
+      ps-contact-form .container {
+        width: 300px;
+      }
+
+      /* Input styles */
+      ps-contact-form input {
+        box-sizing: border-box;
+        border: 2px solid rgba(0, 0, 0, 0.1);
+        padding: 1em;
+        font-size: 1em;
+        width: 70%;
+        outline: none;
+        width: 100%;
+        margin-bottom: 1em;
+        border-radius: 0.25em;
+      }
+
+      /* Textarea styles */
+      ps-contact-form textarea {
+        box-sizing: border-box;
+        border: 2px solid rgba(0, 0, 0, 0.1);
+        padding: 1em;
+        font-size: 1em;
+        width: 70%;
+        outline: none;
+        width: 100%;
+        font-family: sans-serif;
+        height: 150px;
+        border-radius: 0.25em;
+      }
+
+      /* Submit button styles */
+      ps-contact-form button {
+        font-size: 1em;
+        padding: 1em;
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        width: 100%;
+        border-radius: 0.25em;
+        margin-top: 0.75em;
+        background: rgba(0, 0, 0, 0.6);
+        color: white;
+      }
+      ps-contact-form button:hover {
+        cursor: pointer;
+        background: rgba(0, 0, 0, 0.7);
+      }
+
+      /* Error message styles */
+      ps-contact-form .error-message {
+        background: #fadbd8;
+        color: #a2352a;
+        padding: 1em;
+        border-radius: 0.25em;
+      }
+
+      /* Success message styles */
+      ps-contact-form .success-message {
+        background: #d4efdf;
+        color: #1b7a43;
+        padding: 1em;
+        border-radius: 0.25em;
+      }
+
+      /* CSS spinner that appears inside the button during data submission */
+      ps-email-capture .spinner {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: #fff;
+        animation: spin 1s ease-in-out infinite;
+        -webkit-animation: spin 1s ease-in-out infinite;
+      }
+
+      @keyframes spin {
+        to {
+          -webkit-transform: rotate(360deg);
+        }
+      }
+
+      @-webkit-keyframes spin {
+        to {
+          -webkit-transform: rotate(360deg);
+        }
+      }
 ```
 
-To run the unit tests for the components, run:
+<br/>
+<br/>
 
-```bash
-npm test
+# Events
+
+`ps-contact-form` emits 7 different types of events. The following code block highlights when events are emitted and how to capture them
+
 ```
+(somepage.html)
 
-Need help? Check out our docs [here](https://stenciljs.com/docs/my-first-component).
+<body>
+    <!-- Add contact form component -->
+    <ps-contact-form
+      integration-key="Your Integration Key"
+      full-name-placeholder-text="Full Name"
+      email-placeholder-text="Email"
+      message-placeholder-text="Message"
+      submit-button-text="Submit"
+      success-message="Thank you for contacting us, we will get back to your shortly"
+      tags="homepage, after-hiw, before-footer"
+    ></ps-contact-form>
 
+    <script type="text/javascript">
+      const contactFormEl = document.querySelector('ps-contact-form');
 
-## Naming Components
+      contactFormEl.addEventListener('ps-cf-invalid-fullname-ev', () => {
+        console.log('[Event] FullName is invalid');
+      });
 
-When creating new component tags, we recommend _not_ using `stencil` in the component name (ex: `<stencil-datepicker>`). This is because the generated component has little to nothing to do with Stencil; it's just a web component!
+      contactFormEl.addEventListener('ps-cf-invalid-email-ev', () => {
+        console.log('[Event] Email is invalid');
+      });
 
-Instead, use a prefix that fits your company or any name for a group of related components. For example, all of the Ionic generated web components use the prefix `ion`.
+      contactFormEl.addEventListener('ps-cf-invalid-message-ev', () => {
+        console.log('[Event] Message is invalid');
+      });
 
+      contactFormEl.addEventListener('ps-cf-submission-ev', () => {
+        console.log('[Event] Submitting contact form data..');
+      });
 
-## Using this component
+      contactFormEl.addEventListener('ps-cf-submission-success-ev', () => {
+        console.log('[Event] Submission successful');
+      });
 
-There are three strategies we recommend for using web components built with Stencil.
+      contactFormEl.addEventListener('ps-cf-submission-failed-ev', () => {
+        console.log('[Event] Submission failed');
+      });
 
-The first step for all three of these strategies is to [publish to NPM](https://docs.npmjs.com/getting-started/publishing-npm-packages).
-
-### Script tag
-
-- Put a script tag similar to this `<script src='https://unpkg.com/my-component@0.0.1/dist/my-component.esm.js'></script>` in the head of your index.html
-- Then you can use the element anywhere in your template, JSX, html etc
-
-### Node Modules
-- Run `npm install my-component --save`
-- Put a script tag similar to this `<script src='node_modules/my-component/dist/my-component.esm.js'></script>` in the head of your index.html
-- Then you can use the element anywhere in your template, JSX, html etc
-
-### In a stencil-starter app
-- Run `npm install my-component --save`
-- Add an import to the npm packages `import my-component;`
-- Then you can use the element anywhere in your template, JSX, html etc
+      contactFormEl.addEventListener('ps-cf-submission-error-ev', () => {
+        console.log('[Event] Submission error');
+      });
+    </script>
+  </body>
+```
