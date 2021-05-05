@@ -1,6 +1,6 @@
 {
   "name": "ps-contact-form",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Capture fullname, email and message from your website visitors",
   "main": "dist/index.cjs.js",
   "module": "dist/custom-elements/index.js",
