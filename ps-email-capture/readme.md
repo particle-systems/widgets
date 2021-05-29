@@ -5,6 +5,30 @@
 <br/>
 <br/>
 
+# Benefits
+
+✅ Email is validated on both client and server side
+✅ Email is submitted without page reload
+✅ This component can be used inline, as a modal or popup
+✅ Captured emails can be saved to Airtable, Google Sheets or Mailchimp
+✅ Email is checked whether it exists and is deliverable (Coming soon)
+<br/>
+<br/>
+
+# Prerequisite
+
+In order to use this component on your website, **you will need an integration key**. Since we are just starting out, we don't yet have a dedicated interface on our website to generate this key. At the moment, we are doing this manually.
+
+In order to receive the integration key, kindly mail the following details to [tuhin.bhuyan0@gmail.com](mailto:tuhin.bhuyan0@gmail.com) with the subject _Integration key request for ps-email-capture_
+
+1. Which services would you like to integrate with (Airtable, Google Sheets or Mailchimp)?
+2. Domain names of the websites where you will use the component (We need it for security measures)
+
+Optionally, you can drop your request on [Twitter (xtbhyn)](https://twitter.com/xtbhyn)
+
+<br/>
+<br/>
+
 # Install using CDN
 
 **1.** Add the following `script` tag to the pages where you want to use the component
