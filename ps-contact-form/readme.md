@@ -7,14 +7,14 @@
 
 # Benefits
 
-✅ Email is validated on both client and server side
-✅ Data is submitted without page reload
-✅ This component can be used inline, as a modal or popup
-✅ This component can be integrated with Airtable, Google Sheets
-✅ You can configure this component to send you an email notification whenever this form is submitted
-✅ Email is checked whether it exists and is deliverable (Coming soon)
-<br/>
-<br/>
+- ✅ Email is validated on both client and server side
+- ✅ Data is submitted without page reload
+- ✅ This component can be used inline, as a modal or popup
+- ✅ This component can be integrated with Airtable, Google Sheets
+- ✅ You can configure this component to send you an email notification whenever this form is submitted
+- ✅ Email is checked whether it exists and is deliverable (Coming soon)
+  <br/>
+  <br/>
 
 # Prerequisite
 
