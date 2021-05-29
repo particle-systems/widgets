@@ -7,13 +7,13 @@
 
 # Benefits
 
-✅ Email is validated on both client and server side
-✅ Email is submitted without page reload
-✅ This component can be used inline, as a modal or popup
-✅ Captured emails can be saved to Airtable, Google Sheets or Mailchimp
-✅ Email is checked whether it exists and is deliverable (Coming soon)
-<br/>
-<br/>
+- ✅ Email is validated on both client and server side
+- ✅ Email is submitted without page reload
+- ✅ This component can be used inline, as a modal or popup
+- ✅ Captured emails can be saved to Airtable, Google Sheets or Mailchimp
+- ✅ Email is checked whether it exists and is deliverable (Coming soon)
+  <br/>
+  <br/>
 
 # Prerequisite
 
