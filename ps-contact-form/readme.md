@@ -5,6 +5,32 @@
 <br/>
 <br/>
 
+# Benefits
+
+✅ Email is validated on both client and server side
+✅ Data is submitted without page reload
+✅ This component can be used inline, as a modal or popup
+✅ This component can be integrated with Airtable, Google Sheets
+✅ You can configure this component to send you an email notification whenever this form is submitted
+✅ Email is checked whether it exists and is deliverable (Coming soon)
+<br/>
+<br/>
+
+# Prerequisite
+
+In order to use this component on your website, **you will need an integration key**. Since we are just starting out, we don't yet have a dedicated interface on our website to generate this key. At the moment, we are doing this manually.
+
+In order to receive the integration key, kindly mail the following details to [tuhin.bhuyan0@gmail.com](mailto:tuhin.bhuyan0@gmail.com) with the subject _Integration key request for ps-contact-form_
+
+1. Which services would you like to integrate with (Airtable or Google Sheets)?
+2. Email id that should get notifications when the form is submitted
+3. Domain names of the websites where you will use the component (We need it for security measures)
+
+Optionally, you can drop your request on [Twitter (xtbhyn)](https://twitter.com/xtbhyn)
+
+<br/>
+<br/>
+
 # Install using CDN
 
 **1.** Add the following `script` tag to the pages where you want to use the component
@@ -103,7 +129,7 @@ After adding the component to your codebase as shown above, copy paste the follo
       }
 
       /* CSS spinner that appears inside the button during data submission */
-      ps-email-capture .spinner {
+      ps-contact-form .spinner {
         display: inline-block;
         width: 20px;
         height: 20px;
