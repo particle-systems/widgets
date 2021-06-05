@@ -18,15 +18,9 @@
 
 # Prerequisite
 
-In order to use this component on your website, **you will need an integration key**. Since we are just starting out, we don't yet have a dedicated interface on our website to generate this key. At the moment, we are doing this manually.
+In order to use this component on your website, **kindly register for our beta access** by [filling up this Google Form](https://docs.google.com/forms/d/e/1FAIpQLSfws1hSITbZkfkv8dg1QkdhNq3DFmJmoiAZrvGfFjsboVwOGQ/viewform)
 
-In order to receive the integration key, kindly mail the following details to [tuhin.bhuyan0@gmail.com](mailto:tuhin.bhuyan0@gmail.com) with the subject _Integration key request for ps-contact-form_
-
-1. Which services would you like to integrate with (Airtable or Google Sheets)?
-2. Email id that should get notifications when the form is submitted
-3. Domain names of the websites where you will use the component (We need it for security measures)
-
-Optionally, you can drop your request on [Twitter (xtbhyn)](https://twitter.com/xtbhyn)
+In case if you face any issues, kindly contact [xtbhyn](https://twitter.com/xtbhyn) on Twitter or drop a mail at [T@particle.systems](mailto:T@particle.systems)
 
 <br/>
 <br/>
