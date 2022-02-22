@@ -4,11 +4,31 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <title>Stencil Component Starter</title>
-
     <script type="module" src="/build/ps-poll.esm.js"></script>
     <script nomodule src="/build/ps-poll.js"></script>
   </head>
   <body>
-    <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
+    <p>Single select</p>
+    <ps-poll choice="single" name="blog-article-1"></ps-poll>
+    <br />
+    <br />
+    <p>Multi select</p>
+    <ps-poll choice="multi" name="blog-article-2"></ps-poll>
+    <script>
+      const singlePollEl = document.querySelectorAll('ps-poll')[0];
+      const multiPollEl = document.querySelectorAll('ps-poll')[1];
+
+      singlePollEl.options = [
+        { label: 'Option 1 (Single)', value: 'singleOption1' },
+        { label: 'Option 2 (Single)', value: 'singleOption2' },
+        { label: 'Option 3 (Single)', value: 'singleOption3' },
+      ];
+
+      multiPollEl.options = [
+        { label: 'Option 1 (Multi)', value: 'multiOption1' },
+        { label: 'Option 2 (Multi)', value: 'multiOption2' },
+        { label: 'Option 3 (Multi)', value: 'multiOption3' },
+      ];
+    </script>
   </body>
 </html>
