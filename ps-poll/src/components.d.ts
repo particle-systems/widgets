@@ -7,9 +7,14 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface PsPoll {
-        "choice": string;
+        "emitEvents": boolean;
+        "errorMsg": string;
+        "explicitSubmit": boolean;
         "name": string;
         "options": any;
+        "selection": string;
+        "submitButtonLabel": string;
+        "submittedMsg": string;
     }
 }
 declare global {
@@ -25,9 +30,15 @@ declare global {
 }
 declare namespace LocalJSX {
     interface PsPoll {
-        "choice"?: string;
+        "emitEvents"?: boolean;
+        "errorMsg"?: string;
+        "explicitSubmit"?: boolean;
         "name"?: string;
+        "onPsPollEvent"?: (event: CustomEvent<any>) => void;
         "options"?: any;
+        "selection"?: string;
+        "submitButtonLabel"?: string;
+        "submittedMsg"?: string;
     }
     interface IntrinsicElements {
         "ps-poll": PsPoll;
