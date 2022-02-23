@@ -29,6 +29,7 @@ export class PsPoll {
 
   /* State Declaration */
   @State() compState: string = 'init';
+  @State() submitDisabled: boolean = true;
 
   /* Variable Declaration */
   private singlePollChoice: string;
@@ -49,6 +50,11 @@ export class PsPoll {
   handleSingleChoiceInput(e) {
     this.singlePollChoice = e.target.value;
     if (this.emitEvents) this.eventDispatcher('singleChoiceSelected', this.singlePollChoice);
+    if (this.singlePollChoice.length > 0) {
+      this.submitDisabled = false;
+    } else {
+      this.submitDisabled = true;
+    }
     if (!this.explicitSubmit) this.submitPoll();
   }
 
@@ -60,6 +66,11 @@ export class PsPoll {
     } else {
       this.multiPollChoices = this.multiPollChoices.filter(item => item !== e.target.value);
       if (this.emitEvents) this.eventDispatcher('multiChoiceUnselected', this.multiPollChoices);
+    }
+    if (this.multiPollChoices.length > 0) {
+      this.submitDisabled = false;
+    } else {
+      this.submitDisabled = true;
     }
   }
 
@@ -80,7 +91,7 @@ export class PsPoll {
   render() {
     const SubmitButton: FunctionalComponent<SubmitButtonProps> = ({ label }) =>
       this.explicitSubmit && (
-        <button class="submit-button" onClick={() => this.submitPoll()}>
+        <button class="submit-button" onClick={() => this.submitPoll()} disabled={this.submitDisabled}>
           {label}
         </button>
       );

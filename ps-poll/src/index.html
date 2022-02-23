@@ -23,7 +23,7 @@
       singlePollEl.errorMsg = 'An error occurred';
       singlePollEl.submittedMsg = 'Thank you for your opinion';
       singlePollEl.submitButtonLabel = 'Submit';
-      singlePollEl.explicitSubmit = true;
+      singlePollEl.emitEvents = true;
       singlePollEl.options = [
         { label: 'Option 1 (Single)', value: 'singleOption1' },
         { label: 'Option 2 (Single)', value: 'singleOption2' },
@@ -36,13 +36,16 @@
       multiPollEl.submittedMsg = 'Thank you for your opinion';
       multiPollEl.submitButtonLabel = 'Submit';
       multiPollEl.explicitSubmit = true;
+      multiPollEl.emitEvents = true;
       multiPollEl.options = [
         { label: 'Option 1 (Multi)', value: 'multiOption1' },
         { label: 'Option 2 (Multi)', value: 'multiOption2' },
         { label: 'Option 3 (Multi)', value: 'multiOption3' },
       ];
 
-      window.addEventListener('', () => {});
+      window.addEventListener('psPollEvent', e => {
+        console.log(`name: ${e.detail.name}, data: ${e.detail.data}`);
+      });
     </script>
   </body>
 </html>
