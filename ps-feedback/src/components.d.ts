@@ -7,10 +7,10 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface PsFeedback {
-        "audioUpload": boolean;
-        "imageUpload": boolean;
         "inputLabel": string;
         "options": any;
+        "recordAudio": boolean;
+        "uploadImage": boolean;
     }
 }
 declare global {
@@ -26,11 +26,11 @@ declare global {
 }
 declare namespace LocalJSX {
     interface PsFeedback {
-        "audioUpload"?: boolean;
-        "imageUpload"?: boolean;
         "inputLabel"?: string;
         "onPsFeedbackEvent"?: (event: CustomEvent<any>) => void;
         "options"?: any;
+        "recordAudio"?: boolean;
+        "uploadImage"?: boolean;
     }
     interface IntrinsicElements {
         "ps-feedback": PsFeedback;

@@ -11,6 +11,7 @@ interface ButtonProps {
   name: string;
   id: string;
   label: string;
+  data: any;
 }
 
 @Component({
@@ -19,6 +20,8 @@ interface ButtonProps {
 })
 export class PsFeedback {
   @State() compState: string = 'init';
+  @State() isRecording: boolean = false;
+  @State() fileList: any = [];
 
   @Prop() options: any = [
     { label: 'Choose option', value: '', iconUrl: '' },
@@ -27,18 +30,31 @@ export class PsFeedback {
     { label: 'Others', value: 'others', iconUrl: '' },
   ];
   @Prop() inputLabel: string = 'default';
-  @Prop() imageUpload: boolean = false;
-  @Prop() audioUpload: boolean = false;
+  @Prop() uploadImage: boolean = false;
+  @Prop() recordAudio: boolean = false;
 
-  private name: string;
-  private email: string;
-  private message: string;
+  private name: string = '';
+  private email: string = '';
+  private feedbackOption: string = '';
+  private message: string = '';
   private uploads: any;
   private feedbackOptions: any = [
-    { label: 'Idea', value: 'idea' },
-    { label: 'Bug', value: 'bug' },
-    { label: 'Others', value: 'other' },
+    { label: 'Idea', value: 'idea', isChecked: true },
+    { label: 'Bug', value: 'bug', isChecked: false },
+    { label: 'Others', value: 'others', isChecked: false },
   ];
+  private mediaRecorder: any;
+
+  fileInput!: HTMLInputElement;
+
+  componentWillLoad() {
+    if (!navigator.mediaDevices) {
+      if (this.recordAudio) {
+        this.recordAudio = false;
+        console.log('Error: MediaRecorder not available');
+      }
+    }
+  }
 
   @Event({
     eventName: 'psFeedbackEvent',
@@ -56,19 +72,53 @@ export class PsFeedback {
   handleTextInput(e, name: string) {
     let sanitisedInput = e.target.value.trim();
     if (!sanitisedInput) return;
-
     if (name === 'name') {
       this.name = sanitisedInput;
     } else if (name === 'email') {
       this.email = sanitisedInput;
+    } else if (name === 'message') {
+      this.message = sanitisedInput;
     }
   }
 
-  handleFeedbackChoice(e) {}
-
-  handleButtonClick(name: string) {
-    console.log(`buttonName: ${name}`);
+  handleFeedbackOption(e) {
+    console.log(e.target.value);
   }
+
+  handleButtonClick(name: string, data: any) {
+    if (name === 'uploadImage') {
+      this.fileInput.click();
+    } else if (name === 'removeFile') {
+      this.removeFile(data);
+    }
+  }
+
+  addFile() {
+    let buff: any = Array.from(this.fileInput.files);
+    buff.map(file => this.fileList.push(file));
+    this.fileList = [...this.fileList];
+  }
+
+  removeFile(index) {
+    this.fileList.splice(index, 1);
+    this.fileList = [...this.fileList];
+  }
+
+  handleAudioRecording() {
+    if (!this.mediaRecorder) this.initAudioRecording();
+    this.isRecording = !this.isRecording;
+    if (this.isRecording) this.startAudioRecording();
+    else this.stopAudioRecording();
+  }
+
+  initAudioRecording() {
+    let constraints = { audio: true };
+    let chunks = [];
+  }
+
+  startAudioRecording() {}
+
+  stopAudioRecording() {}
 
   render() {
     const TextInput: FunctionalComponent<TextInputProps> = ({ type, name, id, placeholder }) => (
@@ -84,8 +134,9 @@ export class PsFeedback {
             type="radio"
             name="feedbackOption"
             value={option.value}
-            onChange={e => this.handleFeedbackChoice(e)}
+            onChange={e => this.handleFeedbackOption(e)}
             disabled={this.compState === 'submitting' ? true : false}
+            checked={option.isChecked}
           ></input>,
           <label class="ps-feedback-option-label" htmlFor={option.value}>
             {option.label}
@@ -94,10 +145,32 @@ export class PsFeedback {
       </div>
     );
 
-    const Button: FunctionalComponent<ButtonProps> = ({ name, id, label }) => (
-      <button id={id} class="control-btn" onClick={() => this.handleButtonClick(name)}>
-        {label}
-      </button>
+    const Button: FunctionalComponent<ButtonProps> = ({ name, id, label, data }) => {
+      if (name === 'recordAudio') {
+        return (
+          <button id={id} class="control-btn" onClick={() => this.handleAudioRecording()}>
+            {this.isRecording ? <span>Recording..</span> : <span>Record</span>}
+          </button>
+        );
+      } else {
+        return (
+          <button id={id} class="control-btn" onClick={() => this.handleButtonClick(name, data)}>
+            {label}
+          </button>
+        );
+      }
+    };
+
+    // const FileList: FunctionalComponent = () => <ul id="ps-feedback-upload-list" ref={el => (this.fileListEl = el as HTMLUListElement)}></ul>;
+
+    const FileList: FunctionalComponent = () => (
+      <ul id="ps-feedback-upload-list">
+        {this.fileList.map((file, index) => (
+          <li class="ps-feedback-upload-list-item">
+            {file.name} <Button name="removeFile" id="ps-feedback-remove-file-btn" label="Remove" data={index}></Button>
+          </li>
+        ))}
+      </ul>
     );
 
     return (
@@ -105,17 +178,17 @@ export class PsFeedback {
         <TextInput type="text" name="name" id="ps-feedback-name" placeholder="Name"></TextInput>
         <TextInput type="email" name="email" id="ps-feedback-email" placeholder="Email"></TextInput>
         <FeedbackOptions></FeedbackOptions>
-        <textarea id="ps-feedback-textarea"></textarea>
-        <ul id="ps-feedback-upload-list">
-          <li class="ps-feedback-upload-list-item">image.jpg</li>
-          <li class="ps-feedback-upload-list-item">audio.png</li>
-        </ul>
+        <textarea id="ps-feedback-textarea" onInput={e => this.handleTextInput(e, 'message')}></textarea>
         <div class="ps-feedback-btn-group">
           <div class="ps-feedback-upload-btn-group">
-            {this.imageUpload && <Button name="imageUpload" id="ps-feedback-upload-image-btn" label="Upload Image"></Button>}
-            {this.imageUpload && <Button name="recordAudio" id="ps-feedback-record-audio-btn" label="Record Audio"></Button>}
+            {this.uploadImage && <Button name="uploadImage" id="ps-feedback-upload-image-btn" label="Upload Image" data=""></Button>}
+            {this.uploadImage && (
+              <input type="file" id="files" name="files" ref={el => (this.fileInput = el as HTMLInputElement)} onChange={() => this.addFile()} multiple hidden />
+            )}
+            {this.recordAudio && <Button name="recordAudio" id="ps-feedback-record-audio-btn" label="Record Audio" data=""></Button>}
           </div>
-          <Button name="submitFeedback" id="ps-feedback-submit-btn" label="Submit"></Button>
+          <FileList></FileList>
+          <Button name="submitFeedback" id="ps-feedback-submit-btn" label="Submit" data=""></Button>
         </div>
       </div>
     );
